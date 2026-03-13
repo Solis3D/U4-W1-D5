@@ -21,6 +21,12 @@ public class Main {
 
         int elementToExecute = 0;
 
+        System.out.println();
+        System.out.println("---BENVENUTO NEL PLAYER MULTIMEDIALE---");
+        System.out.println();
+        System.out.println("Potrai creare fino a 5 elementi multimediali");
+        System.out.println();
+
         for (int i = 0; i < arrElementi.length ; i++) {
             System.out.println();
             System.out.println("Creazione elemento " + (i + 1) + " di 5");
@@ -34,10 +40,11 @@ public class Main {
                 System.out.println("1 = Immagine");
                 System.out.println("2 = Audio");
                 System.out.println("3 = Video");
+                System.out.println("0 = Esci dal programma");
                 System.out.println();
                 objectType = scanner.nextInt();
 
-                if (objectType >= 1 && objectType <= 3) {
+                if (objectType >= 0 && objectType <= 3) {
                     condition = false;
                 } else {
                     System.out.println("Input non consentito, riprovare...");
@@ -48,6 +55,10 @@ public class Main {
 
             // Switch che gestisce i diversi tipi di elemento che l'utente può scegliere
             switch (objectType) {
+                //Case per uscire qui dal programma
+                case 0:
+                    System.exit(0);
+                    break;
                 //caso 1: Immagine
                 case 1:
                     condition = true;
@@ -210,6 +221,10 @@ public class Main {
                     System.out.println("Errore, oggetto selezionato non riconosciuto");
 
             }
+
+            System.out.println();
+            System.out.println("ELEMENTO CREATO!");
+            System.out.println();
         }
 
         boolean isPlaying = true;
