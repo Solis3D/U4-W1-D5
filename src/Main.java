@@ -233,14 +233,14 @@ public class Main {
 
             } while(validation);
 
-            if (elementToExecute != 0) {
-            ElementoMultimediale chosenElement = arrElementi[elementToExecute - 1];
+             if (elementToExecute != 0) {
+             ElementoMultimediale chosenElement = arrElementi[elementToExecute - 1];
 
-            if (chosenElement instanceof Immagine) {
-                ((Immagine) chosenElement).show();
-            } else {
+             if (chosenElement instanceof Immagine) {
+                 ((Immagine) chosenElement).show();
+             } else {
                 ((ElementoRiproducibile) chosenElement).play();
-            }
+             }
             }
 
         } while (isPlaying);
