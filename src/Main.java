@@ -22,6 +22,7 @@ public class Main {
         int elementToExecute = 0;
 
         for (int i = 0; i < arrElementi.length ; i++) {
+            System.out.println();
             System.out.println("Creazione elemento " + (i + 1) + " di 5");
             System.out.println();
 
@@ -56,15 +57,28 @@ public class Main {
 
                     scanner.nextLine();
 
-                    System.out.println("Dai un titolo all'immagine...");
-                    titolo = scanner.nextLine();
+                    do {
+                        System.out.println("Inserisci titolo...");
+                        titolo = scanner.nextLine();
+
+                        if (titolo.isBlank()){
+                            System.out.println("Titolo non valido. Riprovare.");
+                        }else {
+                            condition = false;
+                        }
+                    } while (condition);
+
 
                     do {
-                        System.out.println("Scegli la luminosità dell'Immagine...");
+                        condition = true;
+                        System.out.println("Scegli la luminosità dell'Immagine da 1 a 10...");
                         luminosita = scanner.nextInt();
 
-                        if (luminosita >= 0 && luminosita <= 10) {
+                        if (luminosita > 0 && luminosita <= 10) {
                             condition = false;
+                        } else {
+                            System.out.println("Valore non valido. Inserire un valore da 1 a 10.");
+                            System.out.println();
                         }
                     }
                     while (condition);
@@ -82,16 +96,27 @@ public class Main {
 
                     scanner.nextLine();
 
-                    System.out.println("Inserisci titolo...");
-                    titolo = scanner.nextLine();
+                    do {
+                        System.out.println("Inserisci titolo...");
+                        titolo = scanner.nextLine();
+
+                        if (titolo.isBlank()){
+                            System.out.println("Titolo non valido. Riprovare.");
+                        }else {
+                            condition = false;
+                        }
+                    } while (condition);
 
                     //chiede la durata
                     do {
-                        System.out.println("Inserisci durata...");
+                        System.out.println("Inserisci durata da 1 a 10...");
                         durata = scanner.nextInt();
 
                         if (durata > 0 && durata <= 10) {
                             condition = false;
+                        } else {
+                            System.out.println("Valore non valido. Inserire un valore da 1 a 10.");
+                            System.out.println();
                         }
                     }
                     while (condition);
@@ -99,11 +124,14 @@ public class Main {
                     //chiede il volume
                     do {
                         condition = true;
-                        System.out.println("Inserisci volume...");
+                        System.out.println("Inserisci volume da 0 a 10...");
                         volume = scanner.nextInt();
 
                         if (volume >= 0 && volume <= 10) {
                             condition = false;
+                        } else {
+                            System.out.println("Valore non valido. Inserire un valore da 0 a 10.");
+                            System.out.println();
                         }
                     }
                     while (condition);
@@ -120,15 +148,26 @@ public class Main {
 
                     scanner.nextLine();
 
-                    System.out.println("Inserisci titolo...");
-                    titolo = scanner.nextLine();
+                    do {
+                        System.out.println("Inserisci titolo...");
+                        titolo = scanner.nextLine();
+
+                        if (titolo.isBlank()){
+                            System.out.println("Titolo non valido. Riprovare.");
+                        }else {
+                            condition = false;
+                        }
+                    } while (condition);
 
                     do {
-                        System.out.println("Inserisci durata...");
+                        System.out.println("Inserisci durata da 1 a 10...");
                         durata = scanner.nextInt();
 
                         if (durata > 0 && durata <= 10) {
                             condition = false;
+                        } else {
+                            System.out.println("Valore non valido. Inserire un valore da 1 a 10.");
+                            System.out.println();
                         }
                     }
                     while (condition);
@@ -136,11 +175,14 @@ public class Main {
                     //chiede il volume
                     do {
                         condition = true;
-                        System.out.println("Inserisci volume...");
+                        System.out.println("Inserisci volume da 0 a 10...");
                         volume = scanner.nextInt();
 
                         if (volume >= 0 && volume <= 10) {
                             condition = false;
+                        } else {
+                            System.out.println("Valore non valido. Inserire un valore da 0 a 10.");
+                            System.out.println();
                         }
                     }
                     while (condition);
@@ -148,11 +190,14 @@ public class Main {
                     //chiede il luminosità
                     do {
                         condition = true;
-                        System.out.println("Scegli la luminosità del Video...");
+                        System.out.println("Scegli la luminosità del Video da 1 a 10...");
                         luminosita = scanner.nextInt();
 
-                        if (luminosita >= 0 && luminosita <= 10) {
+                        if (luminosita > 0 && luminosita <= 10) {
                             condition = false;
+                        } else {
+                            System.out.println("Valore non valido. Inserire un valore da 1 a 10.");
+                            System.out.println();
                         }
                     }
                     while (condition);
@@ -187,12 +232,12 @@ public class Main {
             } while(validation);
 
             if (elementToExecute != 0) {
-            ElementoMultimediale choosenElement = arrElementi[elementToExecute - 1];
+            ElementoMultimediale chosenElement = arrElementi[elementToExecute - 1];
 
-            if (choosenElement instanceof Immagine) {
-                ((Immagine) choosenElement).show();
+            if (chosenElement instanceof Immagine) {
+                ((Immagine) chosenElement).show();
             } else {
-                ((ElementoRiproducibile) choosenElement).play();
+                ((ElementoRiproducibile) chosenElement).play();
             }
             }
 
