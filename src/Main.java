@@ -145,7 +145,7 @@ public class Main {
                 if (elementToExecute == 0){
                     isPlaying = false;
                     validationReq = false;
-                }1
+                }
 
             } while(validationReq);
 
