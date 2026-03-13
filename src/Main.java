@@ -68,31 +68,9 @@ public class Main {
 
                     scanner.nextLine();
 
-                    do {
-                        System.out.println("Inserisci titolo...");
-                        titolo = scanner.nextLine();
+                    titolo = readTitle(scanner);
 
-                        if (titolo.isBlank()){
-                            System.out.println("Titolo non valido. Riprovare.");
-                        }else {
-                            condition = false;
-                        }
-                    } while (condition);
-
-
-                    do {
-                        condition = true;
-                        System.out.println("Scegli la luminosità dell'Immagine da 1 a 10...");
-                        luminosita = scanner.nextInt();
-
-                        if (luminosita > 0 && luminosita <= 10) {
-                            condition = false;
-                        } else {
-                            System.out.println("Valore non valido. Inserire un valore da 1 a 10.");
-                            System.out.println();
-                        }
-                    }
-                    while (condition);
+                    luminosita = readValue(scanner,"Inserisci luminosità da 1 a 10", 1, 10);
 
                     arrElementi[i] = new Immagine(titolo, luminosita);
                     break;
@@ -107,46 +85,13 @@ public class Main {
 
                     scanner.nextLine();
 
-                    do {
-                        System.out.println("Inserisci titolo...");
-                        titolo = scanner.nextLine();
-
-                        if (titolo.isBlank()){
-                            System.out.println("Titolo non valido. Riprovare.");
-                        }else {
-                            condition = false;
-                        }
-                    } while (condition);
+                    titolo = readTitle(scanner);
 
                     //chiede la durata
-                    do {
-                        condition = true;
-                        System.out.println("Inserisci durata da 1 a 10...");
-                        durata = scanner.nextInt();
-
-                        if (durata > 0 && durata <= 10) {
-                            condition = false;
-                        } else {
-                            System.out.println("Valore non valido. Inserire un valore da 1 a 10.");
-                            System.out.println();
-                        }
-                    }
-                    while (condition);
+                    durata = readValue(scanner,"Inserisci durata da 1 a 10...", 1,10);
 
                     //chiede il volume
-                    do {
-                        condition = true;
-                        System.out.println("Inserisci volume da 0 a 10...");
-                        volume = scanner.nextInt();
-
-                        if (volume >= 0 && volume <= 10) {
-                            condition = false;
-                        } else {
-                            System.out.println("Valore non valido. Inserire un valore da 0 a 10.");
-                            System.out.println();
-                        }
-                    }
-                    while (condition);
+                    volume = readValue(scanner, "Inserisci volume da 0 a 10", 0, 10);
 
                     arrElementi[i] = new Audio(titolo, durata, volume);
                     break;
@@ -160,64 +105,18 @@ public class Main {
 
                     scanner.nextLine();
 
-                    do {
-                        System.out.println("Inserisci titolo...");
-                        titolo = scanner.nextLine();
+                    titolo = readTitle(scanner);
 
-                        if (titolo.isBlank()){
-                            System.out.println("Titolo non valido. Riprovare.");
-                        }else {
-                            condition = false;
-                        }
-                    } while (condition);
+                    durata = readValue(scanner,"Inserisci durata da 1 a 10", 1, 10);
 
-                    do {
-                        condition = true;
-                        System.out.println("Inserisci durata da 1 a 10...");
-                        durata = scanner.nextInt();
+                    volume = readValue(scanner, "Inserisci volume da 0 a 10" , 0 ,10);
 
-                        if (durata > 0 && durata <= 10) {
-                            condition = false;
-                        } else {
-                            System.out.println("Valore non valido. Inserire un valore da 1 a 10.");
-                            System.out.println();
-                        }
-                    }
-                    while (condition);
-
-                    //chiede il volume
-                    do {
-                        condition = true;
-                        System.out.println("Inserisci volume da 0 a 10...");
-                        volume = scanner.nextInt();
-
-                        if (volume >= 0 && volume <= 10) {
-                            condition = false;
-                        } else {
-                            System.out.println("Valore non valido. Inserire un valore da 0 a 10.");
-                            System.out.println();
-                        }
-                    }
-                    while (condition);
-
-                    //chiede il luminosità
-                    do {
-                        condition = true;
-                        System.out.println("Scegli la luminosità del Video da 1 a 10...");
-                        luminosita = scanner.nextInt();
-
-                        if (luminosita > 0 && luminosita <= 10) {
-                            condition = false;
-                        } else {
-                            System.out.println("Valore non valido. Inserire un valore da 1 a 10.");
-                            System.out.println();
-                        }
-                    }
-                    while (condition);
+                    luminosita = readValue(scanner, "Inserisci luminosità da 1 a 10", 1, 10);
 
                     arrElementi[i] = new Video(titolo, durata,volume,luminosita);
                     break;
-                default:
+
+                    default:
                     System.out.println("Errore, oggetto selezionato non riconosciuto");
 
             }
@@ -230,7 +129,7 @@ public class Main {
         boolean isPlaying = true;
         do {
 
-            boolean validation = true;
+            boolean validationReq = true;
             do {
                 System.out.println("Quale elemento vuole eseguire? ");
                 System.out.println("Inserire un numero da 1 a 5");
@@ -238,15 +137,17 @@ public class Main {
                 elementToExecute = scanner.nextInt();
 
                 if (elementToExecute >= 1 && elementToExecute <= 5){
-                    validation = false;
+                    validationReq = false;
+                } else {
+                    System.out.println("Elemento inesistente. Selezionare un elemento da 1 a 5.");
                 }
 
                 if (elementToExecute == 0){
                     isPlaying = false;
-                    validation = false;
-                }
+                    validationReq = false;
+                }1
 
-            } while(validation);
+            } while(validationReq);
 
              if (elementToExecute != 0) {
              ElementoMultimediale chosenElement = arrElementi[elementToExecute - 1];
@@ -261,4 +162,47 @@ public class Main {
         } while (isPlaying);
 
     }
+
+    //Metodi per ridurre codice riutilizzato
+
+    //Metodo che legge il titolo e verifica che sia idoneo, ovvero non spazi vuoti o stringa vuota
+    public static String readTitle(Scanner scanner){
+        String titolo;
+        boolean condition = true;
+
+        do {
+            System.out.println("Inserisci titolo...");
+            titolo = scanner.nextLine();
+
+            if (titolo.isBlank()) {
+                System.out.println("Titolo non valido. Riprovare.");
+            } else{
+                condition = false;
+            }
+        }while(condition);
+
+        return titolo;
+    }
+
+    // Metodo che legge un valore in input e verifica che rispetti i criteri e rientri nel range min e max
+    // prende come parametro il messaggio da stampare all'Utente
+    public static int readValue(Scanner scanner, String mex, int min, int max) {
+        int value;
+        boolean condition = true;
+
+        do {
+            System.out.println(mex);
+            value = scanner.nextInt();
+
+            if (value < min || value > max){
+                System.out.println("Valore non valido. Inserire un numero compreso tra " + min + " e " + max);
+            } else {
+                condition = false;
+            }
+
+        }while (condition);
+
+        return value;
+    }
+
 }
