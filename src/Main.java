@@ -109,6 +109,7 @@ public class Main {
 
                     //chiede la durata
                     do {
+                        condition = true;
                         System.out.println("Inserisci durata da 1 a 10...");
                         durata = scanner.nextInt();
 
@@ -160,6 +161,7 @@ public class Main {
                     } while (condition);
 
                     do {
+                        condition = true;
                         System.out.println("Inserisci durata da 1 a 10...");
                         durata = scanner.nextInt();
 
